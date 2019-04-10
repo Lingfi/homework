@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            margin: 0 10px;
+        }
+        
+        [temp] {
+            /* 属性选择 */
+            color: red;
+        }
+        
+        [tempp*='4'] {
+            /* 包含 */
+            font-size: 22px;
+        }
+        
+        [temp^='java'] {
+            /* 开头 */
+            color: aquamarine;
+        }
+        
+        [temp$='099'] {
+            /*结尾*/
+            background-color: #ccc;
+        }
+        
+        a:last-child {
+            color: teal;
+        }
+        
+        a:nth-child(1) {
+            border: 1px solid red;
+        }
+        
+        a:nth-child(2n+1) {
+            background-color: #777;
+        }
+        
+        p::first-line {
+            color: violet;
+        }
+        
+        p::before {
+            content: "";
+            display: block;
+            height: 30px;
+        }
+        
+        p::first-letter {
+            font-size: 30px;
+        }
+        
+        p:nth-child(3) {
+            color: red;
+        }
+        
+        p::selection {
+            color: red;
+        }
+        
+        p:target {
+            background-color: #ccc;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #765;
+            border: 100px solid blue;
+            /* border-image-source: url(./border.jpeg);
+            border-image-slice: 50 40;
+            border-image-repeat: round; */
+            border-image: url(./imgs/border.jpeg) 100 stretch;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        li {
+            height: 50px;
+            width: 100px;
+            float: left;
+            /* background-color: #ccc; */
+            border: 1px solid #333;
+            margin: 0 30px;
+        }
+        
+        li:first-child {
+            border-bottom-right-radius: 20px 10px;
+        }
+        
+        li:nth-child(2) {
+            height: 25px;
+            border-radius: 10px;
+            line-height: 25px;
+            text-align: center;
+        }
+        
+        li:nth-child(3) {
+            position: relative;
+            z-index: 100;
+        }
+        
+        li:nth-child(3)::after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 25px;
+            width: 100px;
+            border: 1px solid #333;
+            border-top: none;
+            top: 48px;
+            border-radius: 0 0 20px 20px;
+            z-index: 1000;
+            margin-left: -1px;
+            background-color: #fff;
+        }
+        
+        .shadow {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            box-shadow: 10px 10px 5px 5px #666;
+        }
+        
+        .box3 {
+            height: 100px;
+            color: brown;
+            background-color: #ccc;
+            text-shadow: 4px 4px 2px #222;
+            font-size: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        img {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            border-radius: 100%;
+        }
+        
+        .main {
+            width: 800px;
+            height: 100px;
+        }
+        
+        .main .part {
+            float: left;
+            width: 25%;
+            border: 10px solid blue;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .part:first-child {
+            border-width: 50px;
+            background-color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <a temp='123' href="#">hello</a>
+    <a tempp='4565' href="#">hello</a>
+    <a temp='javascript' href="#">hello</a>
+    <a temp='ja099' href="#">hello</a>
+    <a href="#">hello</a>
+    <a href="#">hello</a>
+    <a href="#">hello</a>
+    <a href="#">hello</a>
+
+    <h2>1.属性选择器材[], 包含字符*= ,开头^= , 结尾$=</h2>
+    <h2>first-child, last-child, nth-child(从1开始), nth-last-child</h2>
+    <br>
+
+    <h2>2.伪元素选择器::first-letter ::first-line ::before ::after ::selection ::target</h2>
+    <br>
+    <h2>3.颜色rgba, a是0到1, hsla(0-360,100%,100%,0-1), opcity包括子 内部元素</h2>
+
+
+    <a href="#p1">target设置</a>
+    <p id="p1">wffoe ibfei f1bf</p>
+    <p>b;fwebf;wfewf </p>
+    <p>fwefgwegwwegw</p>
+
+    <br>
+    <h2>4.首先必须设置border 后面的才能显示border-image-source, border-image-slice, border-image-repeat这3个可以和写 borde-image：url , px, stretch</h2>
+    <h2>实践和box大小无关 主要是边框大小 符合切出来的边框</h2>
+    <div class="box"></div>
+
+    <h2>5.border-radius: 第一个参数是horizontal 第2个veritial， x x x x / x x x x前面是hori后面是verti</h2>
+    <h3>第3个用的after</h3>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <br>
+
+    <br>
+    <img src="./imgs/p1.jpg" alt="">
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>6.box-shadow第一个是向右 2向下 3模糊（不能负） 4扩展 5颜色， box-shadow: insert内影</h2>
+    <div class="shadow"></div>
+    <br>
+    <br>
+    <br>
+
+    <h2>7.text-shadow: 1.右边 2.下 3.模糊度 4.颜色</h2>
+    <h2>white-space不换行， overflow:hidden 配合txet-overflow:clip-ellipsis省略号</h2>
+    <div class="box3">
+        我的银行卡密码是: 087164218621 我的银行卡密码是: 087164218621 我的银行卡密码是: 087164218621 我的银行卡密码是: 087164218621 我的银行卡密码是: 087164218621
+    </div>
+
+    <br>
+    <h2>8.box-sizing: border-box 创建的宽= 内宽+padding+bordersize为了方便用%</h2>
+    <div class="main">
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+    </div>
+
+
+
+
+</body>
+
+</html>
